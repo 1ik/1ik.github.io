@@ -1,18 +1,18 @@
 # Site settings
 title: Anik Hasan
-description: 'Designer, Developer, Programmer, Hacker, Photographer & Technology Enthusiast'
+description: 'Dev things'
 url: '1ik.github.io'
 baseurl: '/'
 google_analytics: 'UA-79205439-1'
 # disqus_shortname: 'your-disqus-name'
 
 author:
-  name: 'Josh Gerdes'
-  email: josh@joshgerdes.com
-  twitter_username: joshgerdes
-  facebook_username: joshgerdes
-  github_username:  joshgerdes
-  linkedin_username:  joshgerdes
+  name: 'Anik Hasan'
+  #email: 'ping@anik.rocks'
+  twitter_username: heyanik
+  #facebook_username: joshgerdes
+  github_username:  1ik
+  #linkedin_username:  joshgerdes
 
 defaults:
   -
