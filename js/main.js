@@ -1,35 +1,31 @@
 ---
 layout: null
 ---
-$(document).ready(function () {
-  $('a.blog-button').click(function (e) {
-    if ($('.panel-cover').hasClass('panel-cover--collapsed')) return
-    currentWidth = $('.panel-cover').width()
-    if (currentWidth < 960) {
-      $('.panel-cover').addClass('panel-cover--collapsed')
-      $('.content-wrapper').addClass('animated slideInRight')
-    } else {
-      $('.panel-cover').css('max-width', currentWidth)
-      $('.panel-cover').animate({'max-width': '530px', 'width': '40%'}, 400, swing = 'swing', function () {})
-    }
-  })
+(function () {
+  "use strict";
 
-  if (window.location.hash && window.location.hash == '#blog') {
-    $('.panel-cover').addClass('panel-cover--collapsed')
+  var toggleButton = document.getElementById("toggle-all");
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".roadmap-node"));
+
+  if (!toggleButton || !nodes.length) {
+    return;
   }
 
-  if (window.location.pathname !== '{{ site.baseurl }}' && window.location.pathname !== '{{ site.baseurl }}index.html') {
-    $('.panel-cover').addClass('panel-cover--collapsed')
+  function updateToggleLabel() {
+    var allOpen = nodes.every(function (node) { return node.open; });
+    toggleButton.textContent = allOpen ? "Collapse all" : "Expand all";
+    toggleButton.setAttribute("aria-pressed", String(allOpen));
   }
 
-  $('.btn-mobile-menu').click(function () {
-    $('.navigation-wrapper').toggleClass('visible animated bounceInDown')
-    $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
-  })
+  toggleButton.addEventListener("click", function () {
+    var shouldOpen = !nodes.every(function (node) { return node.open; });
+    nodes.forEach(function (node) { node.open = shouldOpen; });
+    updateToggleLabel();
+  });
 
-  $('.navigation-wrapper .blog-button').click(function () {
-    $('.navigation-wrapper').toggleClass('visible')
-    $('.btn-mobile-menu__icon').toggleClass('icon-list icon-x-circle animated fadeIn')
-  })
+  nodes.forEach(function (node) {
+    node.addEventListener("toggle", updateToggleLabel);
+  });
 
-})
+  updateToggleLabel();
+}());

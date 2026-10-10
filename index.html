@@ -1,24 +1,221 @@
 ---
-layout: default
+layout: null
+title: Remote Engineering Roadmap
 ---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An evidence-first roadmap from experienced software engineer to remote AI systems specialist.">
+    <meta name="theme-color" content="#0b0d0c">
+    <title>{{ page.title }} · Anik Hasan</title>
+    <link rel="stylesheet" href="{{ "css/main.css" | prepend: site.baseurl }}">
+  </head>
+  <body class="roadmap-page">
+    <a class="skip-link" href="#roadmap">Skip to roadmap</a>
 
-<div class="main-post-list">
+    <header class="roadmap-hero">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="wordmark" href="{{ site.baseurl }}" aria-label="Anik Hasan roadmap home">
+          <span class="wordmark-mark" aria-hidden="true">A</span>
+          <span>Anik Hasan</span>
+        </a>
+        <div class="topbar-actions">
+          <a href="#gates">Readiness gates</a>
+          <button class="quiet-button" id="toggle-all" type="button" aria-pressed="false">Expand all</button>
+        </div>
+      </nav>
 
-  <ol class="post-list">
-    {% for post in paginator.posts %}
-      <li>
-        <h2 class="post-list__post-title post-title"><a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-        <p class="excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}&hellip;</p>
-        <div class="post-list__meta"><time datetime="{{ post.date | date: "%-d %b %Y" }}" class="post-list__meta--date date">{{ post.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in post.tags %}<a href="{{ site.baseurl }}tags/#{{ tag }}">{{ tag }}</a> {% endfor %}</span></div>
-        <hr class="post-list__divider">
-      </li>
-    {% endfor %}
-  </ol>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">A practical, evidence-first path</p>
+          <h1>Remote engineering,<br><span>without the fantasy.</span></h1>
+          <p class="hero-copy">A systems engineer’s route into LLM inference, distributed ML, and post-training infrastructure—built around proof, sustainable effort, and honest gates.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#roadmap">Start at Day 0 <span aria-hidden="true">↓</span></a>
+            <span class="hero-note">530–850 focused hours to a credible first portfolio</span>
+          </div>
+        </div>
+        <aside class="truth-card" aria-label="Roadmap principle">
+          <span class="truth-number">01</span>
+          <p>AI may accelerate you.<br><strong>Its absence should slow you—not stop you.</strong></p>
+        </aside>
+      </div>
+    </header>
 
-  <hr class="post-list__divider ">
+    <main id="roadmap">
+      <section class="orientation" aria-labelledby="orientation-title">
+        <div>
+          <p class="eyebrow">How to read this</p>
+          <h2 id="orientation-title">Advance on evidence.<br>Not on the calendar.</h2>
+        </div>
+        <div class="orientation-copy">
+          <p>The two early tracks run in parallel, but not equally. Inference is the nearer employment path; RL is the differentiator. Click any node to see its work, prerequisites, and exit gate.</p>
+          <ul class="legend" aria-label="Roadmap legend">
+            <li><span class="legend-dot core"></span>Core path</li>
+            <li><span class="legend-dot parallel"></span>Parallel track</li>
+            <li><span class="legend-dot choice"></span>Choose one</li>
+          </ul>
+        </div>
+      </section>
 
-  {% if paginator.previous_page or paginator.next_page %}
-      {% include pagination.html %}
-  {% endif %}
+      <section class="roadmap" aria-label="Day 0 to advanced remote contributor roadmap">
+        <div class="stage-label"><span>00</span><p>Baseline</p></div>
+        <article class="stage stage-start">
+          <div class="here-marker" aria-label="Your current starting point"><span>←</span> YOU ARE HERE</div>
+          <details class="roadmap-node node-start" open>
+            <summary>
+              <span class="node-kicker">Day 0 · 10–16 hours</span>
+              <span class="node-title">Build the system before the syllabus</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <p>Verify the claimed experience, real constraints, sustainable capacity, and current AI independence before designing the journey.</p>
+              <div class="node-columns">
+                <div><h3>Do the work</h3><ul><li>Write the private constraint sheet</li><li>Run a 120-minute no-AI systems baseline</li><li>Score eight practical micro-assessments</li><li>Select one bridge stack for six months</li><li>Start an evidence log</li></ul></div>
+                <div class="gate"><h3>Exit gate</h3><p>Schedule, baseline scores, selected stack, working environment, evidence log, and top three weaknesses are written down.</p></div>
+              </div>
+            </div>
+          </details>
+        </article>
 
-</div>
+        <div class="stage-label"><span>01</span><p>Foundation</p></div>
+        <article class="stage">
+          <div class="connector" aria-hidden="true"></div>
+          <details class="roadmap-node">
+            <summary>
+              <span class="node-kicker">Stage 1 · 100–160 hours</span>
+              <span class="node-title">Bridge into model systems</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <div class="prereq"><span>Prerequisite</span> Day 0 gate + sustainable weekly schedule</div>
+              <p>Translate existing engineering judgment into Python, PyTorch, ML fundamentals, and observable model execution.</p>
+              <div class="skill-tags" aria-label="Stage 1 topics"><span>Production Python</span><span>PyTorch</span><span>Transformers</span><span>GPU memory</span><span>Testing</span></div>
+              <div class="project"><span>Project 01</span><strong>Model execution laboratory</strong><p>Small open-weight model, token and tensor visibility, decoding comparison, TTFT, generation rate, memory, tests, raw data, and reproducible setup.</p></div>
+              <div class="gate"><h3>Readiness gate</h3><p>Rebuild the core loop, explain tensor transformations, diagnose seeded defects, reproduce benchmarks, and complete a two-hour extension without AI implementation.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>02</span><p>Parallel depth</p></div>
+        <article class="stage stage-branches">
+          <div class="branch-line" aria-hidden="true"></div>
+          <div class="branch-grid">
+            <details class="roadmap-node node-primary">
+              <summary>
+                <span class="node-kicker">Primary · 60–70%</span>
+                <span class="node-title">LLM inference engineering</span>
+                <span class="node-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="node-body">
+                <div class="prereq"><span>Prerequisite</span> Stage 1 model execution fluency</div>
+                <ul><li>vLLM deeply; SGLang comparatively</li><li>TTFT, ITL, throughput, and tail latency</li><li>Batching, scheduling, KV cache, quantization</li><li>Profiling, overload, reliability, and cost</li></ul>
+                <p class="effort">180–300 focused hours</p>
+              </div>
+            </details>
+            <details class="roadmap-node node-secondary">
+              <summary>
+                <span class="node-kicker">Secondary · 30–40%</span>
+                <span class="node-title">RL & post-training foundations</span>
+                <span class="node-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="node-body">
+                <div class="prereq"><span>Prerequisite</span> Python + probability foundation</div>
+                <ul><li>MDPs, returns, value, and policy</li><li>Tabular Q-learning across seeds</li><li>Policy gradients and PPO concepts</li><li>Reward design, evaluation, and GRPO</li></ul>
+                <p class="effort">80–140 hours initially, overlapping later stages</p>
+              </div>
+            </details>
+          </div>
+          <details class="roadmap-node node-project">
+            <summary>
+              <span class="node-kicker">Stage 2 deliverable · 8–12 weeks maintained</span>
+              <span class="node-title">Production inference benchmark service</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <p>Build an OpenAI-compatible service with representative workloads, streaming, authentication, quotas, cancellation, overload behavior, telemetry, failure recovery, and honest cost/performance analysis.</p>
+              <div class="node-columns">
+                <div><h3>Proof</h3><ul><li>Raw benchmark data + environment manifest</li><li>p50/p95/p99, throughput, utilization, memory</li><li>Three releases and one postmortem</li><li>3–5 substantive external contributions</li></ul></div>
+                <div class="gate"><h3>Gate C</h3><p>Show one reproducible improvement and one failure. A reviewer can operate the project from documentation alone.</p></div>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>03</span><p>Convergence</p></div>
+        <article class="stage">
+          <div class="connector" aria-hidden="true"></div>
+          <details class="roadmap-node node-converge">
+            <summary>
+              <span class="node-kicker">Stage 3 · 240–400 hours total</span>
+              <span class="node-title">Rollouts → verification → learning</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <div class="prereq"><span>Prerequisite</span> Credible Stage 2 evidence; RL remains secondary until then</div>
+              <p>Join inference and RL in one measurable, recoverable system: versioned data, multiple rollouts, sandboxed verification, durable records, maintained post-training tooling, and held-out evaluation.</p>
+              <div class="project"><span>Capstone</span><strong>Inference + RL convergence system</strong><p>Trace one sample end to end. Control duplicates, interruptions, leakage, reward hacking, uncertainty, regressions, cost, and GPU utilization.</p></div>
+              <div class="gate"><h3>Convergence gate</h3><p>Explain how rollouts become training signals, recover the pipeline, compare baseline and changed model honestly, and justify distribution only with a measured bottleneck.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>04</span><p>Specialize</p></div>
+        <article class="stage stage-specialize">
+          <div class="connector" aria-hidden="true"></div>
+          <h2>Choose one advanced branch</h2>
+          <p class="stage-intro">These are alternatives—not a checklist. Choose from evidence, access, and the kind of problems you want to own.</p>
+          <div class="specialization-grid">
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Strongest immediate fit</span><span class="node-title">Inference performance</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Scheduling, multi-GPU serving, quantization, runtime internals, profiling.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Systems fit</span><span class="node-title">Distributed ML platform</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>GPU scheduling, artifacts, pipelines, reliability, and multi-node operations.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Convergence target</span><span class="node-title">RL infrastructure</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Rollout engines, reward services, checkpoints, evaluation, trainer integration.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Steep systems branch</span><span class="node-title">GPU kernels</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>C++, CUDA/Triton, kernels, compilers, and GPU architecture.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Least direct route</span><span class="node-title">RL research</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Deeper mathematics, papers, novel experiments, and stronger academic evidence.</p></div></details>
+          </div>
+          <p class="effort centered">300–700 focused hours toward production-level depth</p>
+        </article>
+
+        <div class="stage-label"><span>05</span><p>Destination</p></div>
+        <article class="stage destination">
+          <div class="connector" aria-hidden="true"></div>
+          <p class="eyebrow">The honest destination</p>
+          <h2>Trusted with ambiguous work.<br><span>Dependable when it gets difficult.</span></h2>
+          <p>Not “someone who knows AI tools.” A remote engineer who turns uncertainty into reviewable work, ships observable systems, communicates risk early, and helps others move.</p>
+          <div class="destination-path" aria-label="Career direction">
+            <span>Experienced software engineer</span><b>→</b><span>AI infrastructure engineer</span><b>→</b><span>Distributed ML systems engineer</span><b>→</b><span>Post-training infrastructure specialist</span>
+          </div>
+          <div class="destination-note">Six months of sustained evidence matters more than one polished demo.</div>
+        </article>
+      </section>
+
+      <section class="gates-section" id="gates" aria-labelledby="gates-title">
+        <div class="gates-heading"><p class="eyebrow">Decision points</p><h2 id="gates-title">Readiness is observable.</h2><p>Apply in widening circles. Do not wait for mastery, and do not advance to hide weak foundations.</p></div>
+        <div class="gates-list">
+          <article><span>A</span><div><h3>Independent learner</h3><p>Can attempt, diagnose, explain, test, and sustain the work.</p></div></article>
+          <article><span>B</span><div><h3>AI-backend transition applicant</h3><p>Project 1 is reproducible; scoped work is possible without AI implementation.</p></div></article>
+          <article><span>C</span><div><h3>Specialization applicant</h3><p>Maintained inference evidence withstands technical questioning.</p></div></article>
+          <article><span>D</span><div><h3>Dependable remote engineer</h3><p>Delivery, updates, disagreement, recovery, and availability are proven.</p></div></article>
+          <article><span>E</span><div><h3>Advanced contributor</h3><p>Leads scoped systems through discovery, rollout, maintenance, and hard news.</p></div></article>
+        </div>
+      </section>
+
+      <section class="pace-section" aria-labelledby="pace-title">
+        <div><p class="eyebrow">Keep the promise small</p><h2 id="pace-title">A sustainable pace wins.</h2></div>
+        <div class="pace-grid">
+          <p><strong>8–10 hrs/wk</strong><span>12–25 months</span><small>First specialization portfolio</small></p>
+          <p><strong>15–20 hrs/wk</strong><span>6–13 months</span><small>First specialization portfolio</small></p>
+          <p><strong>24 hrs/wk</strong><span>5–9 months</span><small>4 hours × 6 days</small></p>
+        </div>
+        <blockquote>“On difficult weeks, reduce scope—but preserve continuity.”</blockquote>
+      </section>
+    </main>
+
+    <footer class="roadmap-footer">
+      <p>Built from Anik Hasan’s evidence-first remote engineering roadmap.</p>
+      <a href="#roadmap">Back to the beginning ↑</a>
+    </footer>
+    <script src="{{ "js/main.js" | prepend: site.baseurl }}"></script>
+  </body>
+</html>

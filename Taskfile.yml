@@ -1,0 +1,43 @@
+version: '3'
+
+tasks:
+  git:status:
+    desc: Show repository status and current branch
+    cmds:
+      - git status --short --branch
+
+  git:branch:create:
+    desc: Create the roadmap feature branch
+    cmds:
+      - git checkout -b cursorinteractive-roadmap-a410
+
+  site:build:
+    desc: Build the Jekyll site
+    cmds:
+      - bundle exec jekyll build
+
+  site:serve:
+    desc: Serve the Jekyll site locally
+    cmds:
+      - bundle exec jekyll serve --host 0.0.0.0 --port 4000
+
+  test:
+    desc: Build and validate the interactive roadmap
+    cmds:
+      - bundle exec jekyll build
+      - ruby test/roadmap_test.rb
+
+  git:add:
+    desc: Stage roadmap implementation files
+    cmds:
+      - git add Taskfile.yml index.html css/main.css js/main.js test/roadmap_test.rb
+
+  git:commit:
+    desc: Commit the interactive roadmap
+    cmds:
+      - git commit -m "Build interactive remote engineering roadmap"
+
+  git:push:
+    desc: Push the current feature branch
+    cmds:
+      - git push -u origin cursorinteractive-roadmap-a410
