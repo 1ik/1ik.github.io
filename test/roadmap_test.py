@@ -29,5 +29,6 @@ check('addEventListener("click"' in javascript and "node.open = shouldOpen" in j
 check("<style>" in self_contained and "<script>" in self_contained, "self-contained artifact embeds its CSS and JavaScript")
 check('href="/css/main.css"' not in self_contained and 'src="/js/main.js"' not in self_contained, "self-contained artifact has no local runtime dependencies")
 check("http://" not in self_contained and "https://" not in self_contained, "self-contained artifact has no network dependencies")
+check("{{" not in self_contained and "}}" not in self_contained, "self-contained artifact has no unrendered Liquid")
 
 print("Roadmap validation complete.")

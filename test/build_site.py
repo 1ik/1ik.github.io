@@ -12,10 +12,14 @@ DESTINATION = ROOT / "_site"
 
 def render(source: str) -> str:
     source = re.sub(r"\A---\s.*?\s---\s*", "", source, count=1, flags=re.DOTALL)
-    return re.sub(
+    source = re.sub(
         r'\{\{\s*"([^"]+)"\s*\|\s*prepend:\s*site\.baseurl\s*\}\}',
         r"/\1",
         source,
+    )
+    return (
+        source.replace("{{ page.title }}", "Remote Engineering Roadmap")
+        .replace("{{ site.baseurl }}", "/")
     )
 
 
