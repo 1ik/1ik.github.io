@@ -59,6 +59,13 @@ for directory in ("css", "js", "images"):
         shutil.rmtree(target)
     shutil.copytree(ROOT / directory, target)
 
+# Jekyll removes front matter when serving JavaScript. Mirror that behavior in
+# the portable preview so browsers receive valid JavaScript.
+(DESTINATION / "js/main.js").write_text(
+    without_frontmatter(javascript),
+    encoding="utf-8",
+)
+
 artifact = self_contained(rendered_html, css, javascript)
 (ROOT / "interactive-roadmap.html").write_text(artifact, encoding="utf-8")
 
