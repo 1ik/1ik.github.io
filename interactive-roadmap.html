@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="An evidence-first roadmap from experienced software engineer to remote AI systems specialist.">
+    <meta name="theme-color" content="#0b0d0c">
+    <title>{{ page.title }} · Anik Hasan</title>
+    <style>
+:root {
+  --ink: #171a18;
+  --muted: #68706b;
+  --paper: #f4f2ec;
+  --surface: #fff;
+  --line: #ccd0c8;
+  --dark: #0c0f0d;
+  --green: #baff66;
+  --green-dark: #174d32;
+  --blue: #cddcff;
+  --amber: #ffdca8;
+  --max: 1180px;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body.roadmap-page {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+a { color: inherit; }
+button { font: inherit; }
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  background: var(--green);
+  color: var(--dark);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.roadmap-hero {
+  min-height: 92vh;
+  padding: 0 max(24px, calc((100vw - var(--max)) / 2));
+  color: #f7f7f3;
+  background:
+    radial-gradient(circle at 78% 34%, rgba(186, 255, 102, .12), transparent 25%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    var(--dark);
+  background-size: auto, 44px 44px, 44px 44px, auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.wordmark, .topbar-actions a {
+  text-decoration: none;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.wordmark-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--dark);
+  background: var(--green);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 13px;
+}
+
+.quiet-button {
+  padding: 8px 13px;
+  color: inherit;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quiet-button:hover, .quiet-button:focus-visible { border-color: var(--green); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: clamp(50px, 9vw, 130px);
+  align-items: end;
+  min-height: calc(92vh - 82px);
+  padding: 80px 0 90px;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--green-dark);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.roadmap-hero .eyebrow { color: var(--green); }
+
+.roadmap-hero h1 {
+  max-width: 840px;
+  margin: 0;
+  font-size: clamp(50px, 7vw, 96px);
+  font-weight: 600;
+  letter-spacing: -.065em;
+  line-height: .97;
+}
+
+.roadmap-hero h1 span { color: #8b928d; }
+
+.hero-copy {
+  max-width: 675px;
+  margin: 34px 0 0;
+  color: #aeb5b0;
+  font-size: clamp(17px, 2vw, 21px);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding: 13px 18px;
+  color: var(--dark);
+  background: var(--green);
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-note {
+  max-width: 210px;
+  color: #7e8781;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.truth-card {
+  padding-top: 18px;
+  border-top: 1px solid #4d544f;
+}
+
+.truth-number {
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.truth-card p {
+  margin: 42px 0 0;
+  color: #969d98;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.truth-card strong { color: #f7f7f3; font-weight: 600; }
+
+.orientation, .gates-section, .pace-section, .roadmap-footer {
+  width: min(var(--max), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.orientation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 110px 0 105px;
+}
+
+.orientation h2, .gates-heading h2, .pace-section h2 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 600;
+  letter-spacing: -.05em;
+  line-height: 1.04;
+}
+
+.orientation-copy { color: var(--muted); }
+
+.orientation-copy > p {
+  max-width: 540px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.legend li { display: flex; align-items: center; gap: 8px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.core { background: var(--green-dark); }
+.legend-dot.parallel { background: #7590d6; }
+.legend-dot.choice { background: #d79c43; }
+
+.roadmap {
+  display: grid;
+  grid-template-columns: minmax(92px, 1fr) minmax(0, 1020px) minmax(24px, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.stage-label {
+  grid-column: 1;
+  padding: 42px 24px 0 max(24px, calc((100vw - var(--max)) / 2));
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  text-align: right;
+}
+
+.stage-label span { color: var(--green-dark); font-size: 13px; }
+.stage-label p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.stage {
+  position: relative;
+  grid-column: 2 / 4;
+  padding: 76px max(24px, calc((100vw - var(--max)) / 2)) 90px 80px;
+  border-bottom: 1px solid var(--line);
+}
+
+.stage::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.stage-start { padding-top: 105px; }
+
+.here-marker {
+  position: absolute;
+  top: 42px;
+  left: 80px;
+  color: var(--green-dark);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+}
+
+.here-marker span { display: inline-block; margin-right: 10px; font-size: 20px; }
+
+.roadmap-node {
+  overflow: hidden;
+  max-width: 920px;
+  background: var(--surface);
+  border: 1px solid #bdc2ba;
+  border-radius: 5px;
+  box-shadow: 0 4px 0 rgba(28,35,30,.04);
+}
+
+.roadmap-node[open] { border-color: #818980; }
+
+.roadmap-node summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: 185px 1fr 28px;
+  gap: 22px;
+  align-items: center;
+  min-height: 92px;
+  padding: 22px 26px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.roadmap-node summary::-webkit-details-marker { display: none; }
+
+.roadmap-node summary:hover { background: #fafbf8; }
+
+.roadmap-node summary:focus-visible {
+  outline: 3px solid var(--green-dark);
+  outline-offset: -4px;
+}
+
+.node-kicker {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.node-title {
+  font-size: clamp(18px, 2.4vw, 25px);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+}
+
+.node-toggle {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+
+.node-toggle::before, .node-toggle::after {
+  position: absolute;
+  top: 12px;
+  left: 7px;
+  width: 10px;
+  height: 1px;
+  background: var(--ink);
+  content: "";
+}
+
+.node-toggle::after { transform: rotate(90deg); transition: transform .2s; }
+.roadmap-node[open] .node-toggle::after { transform: rotate(0); }
+
+.node-body {
+  padding: 28px 32px 34px 233px;
+  border-top: 1px solid #e1e4de;
+  color: #4e5651;
+}
+
+.node-body > p:first-child { margin-top: 0; font-size: 17px; }
+.node-body h3 { margin: 0 0 8px; color: var(--ink); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; }
+.node-body ul { margin: 0; padding-left: 18px; }
+.node-body li { margin: 5px 0; }
+
+.node-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 28px;
+}
+
+.gate, .project {
+  padding: 20px;
+  background: #eff2eb;
+  border-left: 3px solid var(--green-dark);
+}
+
+.gate p, .project p { margin: 0; font-size: 14px; }
+
+.prereq {
+  margin-bottom: 22px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e1e4de;
+  font-size: 13px;
+}
+
+.prereq span, .project > span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--green-dark);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 24px 0; }
+.skill-tags span { padding: 5px 10px; background: #eef0eb; border-radius: 2px; font-family: var(--mono); font-size: 9px; text-transform: uppercase; }
+.project { margin: 26px 0; background: #f5f1e9; border-color: #d79c43; }
+.project strong { display: block; margin-bottom: 7px; color: var(--ink); }
+.effort { color: var(--green-dark); font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+.centered { text-align: center; }
+
+.connector {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  height: 76px;
+  border-left: 1px dashed #889188;
+}
+
+.connector::after {
+  position: absolute;
+  bottom: -1px;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  background: var(--green-dark);
+  border-radius: 50%;
+  content: "";
+}
+
+.stage-branches { padding-top: 100px; }
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 24px;
+  max-width: 920px;
+}
+
+.branch-grid .roadmap-node summary {
+  grid-template-columns: 1fr 28px;
+  min-height: 148px;
+}
+
+.branch-grid .node-kicker { grid-column: 1; }
+.branch-grid .node-title { grid-column: 1; }
+.branch-grid .node-toggle { grid-column: 2; grid-row: 1 / 3; }
+.branch-grid .node-body { padding: 26px; }
+.node-primary { border-top: 4px solid var(--green-dark); }
+.node-secondary { border-top: 4px solid #7590d6; }
+.node-project { margin-top: 38px; }
+
+.branch-line {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  width: min(65%, 600px);
+  height: 33px;
+  border-top: 1px dashed #889188;
+  border-right: 1px dashed #889188;
+  border-left: 1px dashed #889188;
+}
+
+.stage-specialize h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -.04em;
+}
+
+.stage-intro { max-width: 650px; margin: 12px 0 36px; color: var(--muted); }
+
+.specialization-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 920px;
+}
+
+.roadmap-node.compact summary {
+  grid-template-columns: 1fr 26px;
+  gap: 5px 16px;
+  min-height: 115px;
+}
+
+.compact .node-kicker, .compact .node-title { grid-column: 1; }
+.compact .node-toggle { grid-column: 2; grid-row: 1 / 3; }
+.compact .node-title { font-size: 18px; }
+.compact .node-body { padding: 18px 26px; font-size: 14px; }
+.compact .node-body p { margin: 0; }
+.specialization-grid .compact:nth-child(5) { grid-column: 1 / -1; }
+
+.destination {
+  padding-top: 120px;
+  padding-bottom: 125px;
+  color: #f6f7f3;
+  background: var(--dark);
+}
+
+.destination::before { background: #303532; }
+.destination .eyebrow { color: var(--green); }
+.destination h2 { margin: 0; font-size: clamp(42px, 6vw, 75px); line-height: 1.03; letter-spacing: -.055em; }
+.destination h2 span { color: #7e8781; }
+.destination > p:not(.eyebrow) { max-width: 730px; color: #aeb5b0; font-size: 18px; }
+
+.destination-path {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 45px 0;
+  color: #cfd5d0;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.destination-path b { color: var(--green); font-size: 17px; }
+.destination-note { display: inline-block; padding: 11px 15px; color: var(--dark); background: var(--green); font-size: 12px; font-weight: 700; }
+
+.gates-section {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 90px;
+  padding: 120px 0;
+}
+
+.gates-heading > p:last-child { max-width: 410px; color: var(--muted); }
+.gates-list { border-top: 1px solid var(--line); }
+.gates-list article { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.gates-list article > span { display: grid; width: 36px; height: 36px; place-items: center; color: var(--green-dark); border: 1px solid #aab1a8; border-radius: 50%; font-family: var(--mono); font-size: 12px; }
+.gates-list h3 { margin: 1px 0 5px; font-size: 17px; }
+.gates-list p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.pace-section {
+  padding: 105px 0 120px;
+  border-top: 1px solid var(--line);
+}
+
+.pace-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin: 55px 0; border: 1px solid var(--line); }
+.pace-grid p { margin: 0; padding: 26px; border-right: 1px solid var(--line); }
+.pace-grid p:last-child { border-right: 0; }
+.pace-grid strong, .pace-grid span, .pace-grid small { display: block; }
+.pace-grid strong { font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+.pace-grid span { margin: 13px 0 2px; font-size: 28px; font-weight: 700; letter-spacing: -.04em; }
+.pace-grid small { color: var(--muted); }
+.pace-section blockquote { margin: 60px auto 0; max-width: 800px; font-size: clamp(26px, 4vw, 45px); font-weight: 600; letter-spacing: -.04em; line-height: 1.2; text-align: center; }
+
+.roadmap-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 34px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 820px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .truth-card { max-width: 420px; }
+  .orientation, .gates-section { grid-template-columns: 1fr; gap: 36px; }
+  .roadmap { grid-template-columns: 50px 1fr; }
+  .stage-label { padding: 32px 10px 0; }
+  .stage-label p { writing-mode: vertical-rl; margin-left: auto; }
+  .stage { grid-column: 2; padding: 82px 20px 82px 32px; }
+  .here-marker, .connector, .branch-line { left: 32px; }
+  .roadmap-node summary { grid-template-columns: 1fr 28px; gap: 4px 16px; }
+  .roadmap-node .node-kicker, .roadmap-node .node-title { grid-column: 1; }
+  .roadmap-node .node-toggle { grid-column: 2; grid-row: 1 / 3; }
+  .node-body { padding: 25px; }
+  .branch-grid { grid-template-columns: 1fr; }
+  .branch-line { width: 40%; }
+  .destination-path { align-items: flex-start; flex-direction: column; }
+  .destination-path b { transform: rotate(90deg); }
+  .pace-grid { grid-template-columns: 1fr; }
+  .pace-grid p { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 560px) {
+  .topbar-actions a { display: none; }
+  .roadmap-hero { min-height: auto; }
+  .hero-grid { min-height: auto; padding: 70px 0 80px; }
+  .roadmap-hero h1 { font-size: 48px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .orientation, .gates-section, .pace-section, .roadmap-footer { width: min(100% - 32px, var(--max)); }
+  .orientation { padding: 80px 0; }
+  .roadmap { grid-template-columns: 34px 1fr; }
+  .stage { padding-right: 14px; padding-left: 20px; }
+  .stage-label { padding-right: 5px; padding-left: 5px; }
+  .here-marker, .connector, .branch-line { left: 20px; }
+  .node-columns, .specialization-grid { grid-template-columns: 1fr; }
+  .specialization-grid .compact:nth-child(5) { grid-column: auto; }
+  .roadmap-node summary { padding: 18px; }
+  .node-body { padding: 21px 18px; }
+  .destination { padding-top: 100px; }
+  .roadmap-footer { flex-direction: column; gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+    </style>
+  </head>
+  <body class="roadmap-page">
+    <a class="skip-link" href="#roadmap">Skip to roadmap</a>
+
+    <header class="roadmap-hero">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a class="wordmark" href="{{ site.baseurl }}" aria-label="Anik Hasan roadmap home">
+          <span class="wordmark-mark" aria-hidden="true">A</span>
+          <span>Anik Hasan</span>
+        </a>
+        <div class="topbar-actions">
+          <a href="#gates">Readiness gates</a>
+          <button class="quiet-button" id="toggle-all" type="button" aria-pressed="false">Expand all</button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">A practical, evidence-first path</p>
+          <h1>Remote engineering,<br><span>without the fantasy.</span></h1>
+          <p class="hero-copy">A systems engineer’s route into LLM inference, distributed ML, and post-training infrastructure—built around proof, sustainable effort, and honest gates.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#roadmap">Start at Day 0 <span aria-hidden="true">↓</span></a>
+            <span class="hero-note">530–850 focused hours to a credible first portfolio</span>
+          </div>
+        </div>
+        <aside class="truth-card" aria-label="Roadmap principle">
+          <span class="truth-number">01</span>
+          <p>AI may accelerate you.<br><strong>Its absence should slow you—not stop you.</strong></p>
+        </aside>
+      </div>
+    </header>
+
+    <main id="roadmap">
+      <section class="orientation" aria-labelledby="orientation-title">
+        <div>
+          <p class="eyebrow">How to read this</p>
+          <h2 id="orientation-title">Advance on evidence.<br>Not on the calendar.</h2>
+        </div>
+        <div class="orientation-copy">
+          <p>The two early tracks run in parallel, but not equally. Inference is the nearer employment path; RL is the differentiator. Click any node to see its work, prerequisites, and exit gate.</p>
+          <ul class="legend" aria-label="Roadmap legend">
+            <li><span class="legend-dot core"></span>Core path</li>
+            <li><span class="legend-dot parallel"></span>Parallel track</li>
+            <li><span class="legend-dot choice"></span>Choose one</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="roadmap" aria-label="Day 0 to advanced remote contributor roadmap">
+        <div class="stage-label"><span>00</span><p>Baseline</p></div>
+        <article class="stage stage-start">
+          <div class="here-marker" aria-label="Your current starting point"><span>←</span> YOU ARE HERE</div>
+          <details class="roadmap-node node-start" open>
+            <summary>
+              <span class="node-kicker">Day 0 · 10–16 hours</span>
+              <span class="node-title">Build the system before the syllabus</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <p>Verify the claimed experience, real constraints, sustainable capacity, and current AI independence before designing the journey.</p>
+              <div class="node-columns">
+                <div><h3>Do the work</h3><ul><li>Write the private constraint sheet</li><li>Run a 120-minute no-AI systems baseline</li><li>Score eight practical micro-assessments</li><li>Select one bridge stack for six months</li><li>Start an evidence log</li></ul></div>
+                <div class="gate"><h3>Exit gate</h3><p>Schedule, baseline scores, selected stack, working environment, evidence log, and top three weaknesses are written down.</p></div>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>01</span><p>Foundation</p></div>
+        <article class="stage">
+          <div class="connector" aria-hidden="true"></div>
+          <details class="roadmap-node">
+            <summary>
+              <span class="node-kicker">Stage 1 · 100–160 hours</span>
+              <span class="node-title">Bridge into model systems</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <div class="prereq"><span>Prerequisite</span> Day 0 gate + sustainable weekly schedule</div>
+              <p>Translate existing engineering judgment into Python, PyTorch, ML fundamentals, and observable model execution.</p>
+              <div class="skill-tags" aria-label="Stage 1 topics"><span>Production Python</span><span>PyTorch</span><span>Transformers</span><span>GPU memory</span><span>Testing</span></div>
+              <div class="project"><span>Project 01</span><strong>Model execution laboratory</strong><p>Small open-weight model, token and tensor visibility, decoding comparison, TTFT, generation rate, memory, tests, raw data, and reproducible setup.</p></div>
+              <div class="gate"><h3>Readiness gate</h3><p>Rebuild the core loop, explain tensor transformations, diagnose seeded defects, reproduce benchmarks, and complete a two-hour extension without AI implementation.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>02</span><p>Parallel depth</p></div>
+        <article class="stage stage-branches">
+          <div class="branch-line" aria-hidden="true"></div>
+          <div class="branch-grid">
+            <details class="roadmap-node node-primary">
+              <summary>
+                <span class="node-kicker">Primary · 60–70%</span>
+                <span class="node-title">LLM inference engineering</span>
+                <span class="node-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="node-body">
+                <div class="prereq"><span>Prerequisite</span> Stage 1 model execution fluency</div>
+                <ul><li>vLLM deeply; SGLang comparatively</li><li>TTFT, ITL, throughput, and tail latency</li><li>Batching, scheduling, KV cache, quantization</li><li>Profiling, overload, reliability, and cost</li></ul>
+                <p class="effort">180–300 focused hours</p>
+              </div>
+            </details>
+            <details class="roadmap-node node-secondary">
+              <summary>
+                <span class="node-kicker">Secondary · 30–40%</span>
+                <span class="node-title">RL & post-training foundations</span>
+                <span class="node-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="node-body">
+                <div class="prereq"><span>Prerequisite</span> Python + probability foundation</div>
+                <ul><li>MDPs, returns, value, and policy</li><li>Tabular Q-learning across seeds</li><li>Policy gradients and PPO concepts</li><li>Reward design, evaluation, and GRPO</li></ul>
+                <p class="effort">80–140 hours initially, overlapping later stages</p>
+              </div>
+            </details>
+          </div>
+          <details class="roadmap-node node-project">
+            <summary>
+              <span class="node-kicker">Stage 2 deliverable · 8–12 weeks maintained</span>
+              <span class="node-title">Production inference benchmark service</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <p>Build an OpenAI-compatible service with representative workloads, streaming, authentication, quotas, cancellation, overload behavior, telemetry, failure recovery, and honest cost/performance analysis.</p>
+              <div class="node-columns">
+                <div><h3>Proof</h3><ul><li>Raw benchmark data + environment manifest</li><li>p50/p95/p99, throughput, utilization, memory</li><li>Three releases and one postmortem</li><li>3–5 substantive external contributions</li></ul></div>
+                <div class="gate"><h3>Gate C</h3><p>Show one reproducible improvement and one failure. A reviewer can operate the project from documentation alone.</p></div>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>03</span><p>Convergence</p></div>
+        <article class="stage">
+          <div class="connector" aria-hidden="true"></div>
+          <details class="roadmap-node node-converge">
+            <summary>
+              <span class="node-kicker">Stage 3 · 240–400 hours total</span>
+              <span class="node-title">Rollouts → verification → learning</span>
+              <span class="node-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="node-body">
+              <div class="prereq"><span>Prerequisite</span> Credible Stage 2 evidence; RL remains secondary until then</div>
+              <p>Join inference and RL in one measurable, recoverable system: versioned data, multiple rollouts, sandboxed verification, durable records, maintained post-training tooling, and held-out evaluation.</p>
+              <div class="project"><span>Capstone</span><strong>Inference + RL convergence system</strong><p>Trace one sample end to end. Control duplicates, interruptions, leakage, reward hacking, uncertainty, regressions, cost, and GPU utilization.</p></div>
+              <div class="gate"><h3>Convergence gate</h3><p>Explain how rollouts become training signals, recover the pipeline, compare baseline and changed model honestly, and justify distribution only with a measured bottleneck.</p></div>
+            </div>
+          </details>
+        </article>
+
+        <div class="stage-label"><span>04</span><p>Specialize</p></div>
+        <article class="stage stage-specialize">
+          <div class="connector" aria-hidden="true"></div>
+          <h2>Choose one advanced branch</h2>
+          <p class="stage-intro">These are alternatives—not a checklist. Choose from evidence, access, and the kind of problems you want to own.</p>
+          <div class="specialization-grid">
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Strongest immediate fit</span><span class="node-title">Inference performance</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Scheduling, multi-GPU serving, quantization, runtime internals, profiling.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Systems fit</span><span class="node-title">Distributed ML platform</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>GPU scheduling, artifacts, pipelines, reliability, and multi-node operations.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Convergence target</span><span class="node-title">RL infrastructure</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Rollout engines, reward services, checkpoints, evaluation, trainer integration.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Steep systems branch</span><span class="node-title">GPU kernels</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>C++, CUDA/Triton, kernels, compilers, and GPU architecture.</p></div></details>
+            <details class="roadmap-node compact"><summary><span class="node-kicker">Least direct route</span><span class="node-title">RL research</span><span class="node-toggle" aria-hidden="true"></span></summary><div class="node-body"><p>Deeper mathematics, papers, novel experiments, and stronger academic evidence.</p></div></details>
+          </div>
+          <p class="effort centered">300–700 focused hours toward production-level depth</p>
+        </article>
+
+        <div class="stage-label"><span>05</span><p>Destination</p></div>
+        <article class="stage destination">
+          <div class="connector" aria-hidden="true"></div>
+          <p class="eyebrow">The honest destination</p>
+          <h2>Trusted with ambiguous work.<br><span>Dependable when it gets difficult.</span></h2>
+          <p>Not “someone who knows AI tools.” A remote engineer who turns uncertainty into reviewable work, ships observable systems, communicates risk early, and helps others move.</p>
+          <div class="destination-path" aria-label="Career direction">
+            <span>Experienced software engineer</span><b>→</b><span>AI infrastructure engineer</span><b>→</b><span>Distributed ML systems engineer</span><b>→</b><span>Post-training infrastructure specialist</span>
+          </div>
+          <div class="destination-note">Six months of sustained evidence matters more than one polished demo.</div>
+        </article>
+      </section>
+
+      <section class="gates-section" id="gates" aria-labelledby="gates-title">
+        <div class="gates-heading"><p class="eyebrow">Decision points</p><h2 id="gates-title">Readiness is observable.</h2><p>Apply in widening circles. Do not wait for mastery, and do not advance to hide weak foundations.</p></div>
+        <div class="gates-list">
+          <article><span>A</span><div><h3>Independent learner</h3><p>Can attempt, diagnose, explain, test, and sustain the work.</p></div></article>
+          <article><span>B</span><div><h3>AI-backend transition applicant</h3><p>Project 1 is reproducible; scoped work is possible without AI implementation.</p></div></article>
+          <article><span>C</span><div><h3>Specialization applicant</h3><p>Maintained inference evidence withstands technical questioning.</p></div></article>
+          <article><span>D</span><div><h3>Dependable remote engineer</h3><p>Delivery, updates, disagreement, recovery, and availability are proven.</p></div></article>
+          <article><span>E</span><div><h3>Advanced contributor</h3><p>Leads scoped systems through discovery, rollout, maintenance, and hard news.</p></div></article>
+        </div>
+      </section>
+
+      <section class="pace-section" aria-labelledby="pace-title">
+        <div><p class="eyebrow">Keep the promise small</p><h2 id="pace-title">A sustainable pace wins.</h2></div>
+        <div class="pace-grid">
+          <p><strong>8–10 hrs/wk</strong><span>12–25 months</span><small>First specialization portfolio</small></p>
+          <p><strong>15–20 hrs/wk</strong><span>6–13 months</span><small>First specialization portfolio</small></p>
+          <p><strong>24 hrs/wk</strong><span>5–9 months</span><small>4 hours × 6 days</small></p>
+        </div>
+        <blockquote>“On difficult weeks, reduce scope—but preserve continuity.”</blockquote>
+      </section>
+    </main>
+
+    <footer class="roadmap-footer">
+      <p>Built from Anik Hasan’s evidence-first remote engineering roadmap.</p>
+      <a href="#roadmap">Back to the beginning ↑</a>
+    </footer>
+    <script>
+(function () {
+  "use strict";
+
+  var toggleButton = document.getElementById("toggle-all");
+  var nodes = Array.prototype.slice.call(document.querySelectorAll(".roadmap-node"));
+
+  if (!toggleButton || !nodes.length) {
+    return;
+  }
+
+  function updateToggleLabel() {
+    var allOpen = nodes.every(function (node) { return node.open; });
+    toggleButton.textContent = allOpen ? "Collapse all" : "Expand all";
+    toggleButton.setAttribute("aria-pressed", String(allOpen));
+  }
+
+  toggleButton.addEventListener("click", function () {
+    var shouldOpen = !nodes.every(function (node) { return node.open; });
+    nodes.forEach(function (node) { node.open = shouldOpen; });
+    updateToggleLabel();
+  });
+
+  nodes.forEach(function (node) {
+    node.addEventListener("toggle", updateToggleLabel);
+  });
+
+  updateToggleLabel();
+}());
+
+    </script>
+  </body>
+</html>

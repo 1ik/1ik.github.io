@@ -1,6 +1,12 @@
 version: '3'
 
 tasks:
+  deps:install:
+    desc: Install Bundler and project gems
+    cmds:
+      - gem install bundler
+      - bundle install
+
   git:status:
     desc: Show repository status and current branch
     cmds:
@@ -21,21 +27,43 @@ tasks:
     cmds:
       - bundle exec jekyll serve --host 0.0.0.0 --port 4000
 
+  site:preview:
+    desc: Build and serve a dependency-free local preview
+    cmds:
+      - python3 test/build_site.py
+      - python3 -m http.server 4000 --directory _site
+
+  site:preview:start:
+    desc: Start the portable preview in a tmux session
+    cmds:
+      - python3 test/build_site.py
+      - tmux -f /exec-daemon/tmux.portal.conf has-session -t '=roadmap-preview' 2>/dev/null || tmux -f /exec-daemon/tmux.portal.conf new-session -d -s roadmap-preview -c "{{.ROOT_DIR}}" -- python3 -m http.server 4000 --directory _site
+
+  artifact:package:
+    desc: Build and copy the self-contained roadmap to the Project store
+    cmds:
+      - python3 test/build_site.py --copy-to /cursor/stores/bc-8aa91ace-7e74-49c9-9643-e2978a14fd21/docs/interactive-roadmap.html
+
   test:
     desc: Build and validate the interactive roadmap
     cmds:
-      - bundle exec jekyll build
-      - ruby test/roadmap_test.rb
+      - python3 test/build_site.py
+      - python3 test/roadmap_test.py
 
   git:add:
     desc: Stage roadmap implementation files
     cmds:
-      - git add Taskfile.yml index.html css/main.css js/main.js test/roadmap_test.rb
+      - git add -A Taskfile.yml index.html interactive-roadmap.html css/main.css js/main.js test
 
   git:commit:
     desc: Commit the interactive roadmap
     cmds:
       - git commit -m "Build interactive remote engineering roadmap"
+
+  git:commit:tests:
+    desc: Commit the portable roadmap test workflow
+    cmds:
+      - git commit -m "Add portable roadmap test workflow"
 
   git:push:
     desc: Push the current feature branch
