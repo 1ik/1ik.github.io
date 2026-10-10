@@ -25,7 +25,7 @@ check("Readiness gate" in html and "Gate C" in html, "readiness gates are visibl
 check("100–160 hours" in html and "300–700 focused hours" in html, "effort ranges are visible")
 check('class="skip-link"' in html and "aria-label=" in html, "accessible navigation and labels are present")
 check("@media (max-width: 560px)" in css and "@media (prefers-reduced-motion: reduce)" in css, "responsive and reduced-motion styles are present")
-check('addEventListener("click"' in javascript and "node.open = shouldOpen" in javascript, "expand and collapse control is interactive")
+check('addEventListener("click"' in javascript and 'node.setAttribute("open", "")' in javascript and 'node.removeAttribute("open")' in javascript, "expand and collapse control is interactive")
 check(not javascript.lstrip().startswith("---"), "portable preview JavaScript has no Jekyll front matter")
 check("<style>" in self_contained and "<script>" in self_contained, "self-contained artifact embeds its CSS and JavaScript")
 check('href="/css/main.css"' not in self_contained and 'src="/js/main.js"' not in self_contained, "self-contained artifact has no local runtime dependencies")

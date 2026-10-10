@@ -61,9 +61,9 @@ tasks:
       - git commit -m "Build interactive remote engineering roadmap"
 
   git:commit:tests:
-    desc: Commit the portable roadmap test workflow
+    desc: Commit portable roadmap interaction fixes
     cmds:
-      - git commit -m "Add portable roadmap test workflow"
+      - git commit -m "Fix portable roadmap interactions"
 
   git:push:
     desc: Push the current feature branch

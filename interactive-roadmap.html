@@ -837,9 +837,20 @@ button { font: inherit; }
   }
 
   toggleButton.addEventListener("click", function () {
-    var shouldOpen = !nodes.every(function (node) { return node.open; });
-    nodes.forEach(function (node) { node.open = shouldOpen; });
-    updateToggleLabel();
+    var shouldOpen = nodes.some(function (node) {
+      return !node.hasAttribute("open");
+    });
+
+    nodes.forEach(function (node) {
+      if (shouldOpen) {
+        node.setAttribute("open", "");
+      } else {
+        node.removeAttribute("open");
+      }
+    });
+
+    toggleButton.textContent = shouldOpen ? "Collapse all" : "Expand all";
+    toggleButton.setAttribute("aria-pressed", String(shouldOpen));
   });
 
   nodes.forEach(function (node) {
